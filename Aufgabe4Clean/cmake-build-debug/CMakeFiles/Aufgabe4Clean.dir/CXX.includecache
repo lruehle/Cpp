@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/WISEM18/Semesterarbeit/Aufgabe4Clean/lib/Denkmal.h
+string
+-
+vector
+-
+algorithm
+-
+
+D:/WISEM18/Semesterarbeit/Aufgabe4Clean/main.cpp
+iostream
+-
+string
+-
+vector
+-
+fstream
+-
+lib/Denkmal.h
+D:/WISEM18/Semesterarbeit/Aufgabe4Clean/lib/Denkmal.h
+
