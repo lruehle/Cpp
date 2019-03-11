@@ -30,15 +30,16 @@ int main(int argc, char** argv) {
     ofstream ausgabe;
     ofstream Jsonausgabe;
     ofstream JsonausgabePLZ;
+    //ofstream PLZAusgabe;
     ausgabe.open("../lib/Test.txt"); //ausgabe in externe Datei, da (mein) Clion Terminal nicht alles anzeigt
     Jsonausgabe.open("../lib/JsonExport.json");
     JsonausgabePLZ.open("../lib/PLZJson.json");
-
+    //PLZAusgabe.open("../lib/PLZAusgabe.txt");
 
     if (argc == 1) {
         cout << "liest ../denkmalliste-bereinigt.csv: " << endl;
         cout << "*** Ergebnisse in: lib/Test.txt ***" << endl;
-        eingabe.open("../../denkmalliste-bereinigt.csv");
+        eingabe.open("../denkmalliste-bereinigt.csv");
     } else if (argc > 1) {
         cout << "Diese Datei wird geoeffnet: " << argv[1] << endl;
         cout << "Ergebnisse in: ..lib/Test.txt" << endl;
@@ -133,7 +134,7 @@ int main(int argc, char** argv) {
     for (APiT = AllPointer.begin(); APiT != AllPointer.end(); APiT++) {
         count++;
         vector<Denkmal *>::iterator secondLast = AllPointer.end();
-        advance(secondLast, -1); //zeigt auf letztes Element im Vector
+        advance(secondLast, -1); //sollte nun auf letztes Element im Vector zeigen
         Jsonausgabe << (*APiT)->WritetoJson(count);
 
         if (distance(APiT, secondLast) == 0) { //Komma-removal last Element
@@ -150,7 +151,7 @@ int main(int argc, char** argv) {
     while (wdh != 0){
         cout << "Datensaetze mit welcher Postleizahl ausgeben?" << endl;
         cin >> Usereingabe;
-        if (Usereingabe.length() != 5) { // Annahme, dass PLZ 5Stellen hat, nicht überprüft...
+        if (Usereingabe.length() != 5) { // Annahme, dass PLZ 5Stellen hat, noch nicht auf korrektheit überprüft...
             cout << "Zu lang oder kurz für eine PLZ, bitt 5 Stellen eingeben" << endl;
         }
             //else if(all_of(Usereingabe.begin(),Usereingabe.end(),::isdigit())){
@@ -183,7 +184,7 @@ int main(int argc, char** argv) {
             if(count==0){
                 cout<<"Keine Datensaetze mit dieser PLZ in Datei"<<endl;
             }
-            else if(count>=1){
+            else{
                 JsonausgabePLZ << "}\n}";
                 cout<<"***JsonExport der Datensaetze mit PLZ "<<Usereingabe<<" in lib/PLZJson.json***"<<endl;
             }

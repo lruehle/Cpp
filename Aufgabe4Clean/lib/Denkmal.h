@@ -7,6 +7,7 @@
 
 #endif //AUFGABE4CLEAN_DENKMAL_H
 
+
 #include <string>
 #include <vector>
 #include <algorithm>
@@ -18,7 +19,7 @@ private:
     vector<string>ObjectWert;
 public:
     Denkmal();
-    ~Denkmal();
+    ~Denkmal(){/*Destructor*/};
     void pushBack_Token(string Token);
     void pushBack_Wert(string Wert);
     string WritetoJson(int i);
